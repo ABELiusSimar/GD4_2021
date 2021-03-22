@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.43681002, g: 0.48444098, b: 0.56469697, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 153965823}
   - component: {fileID: 153965828}
   - component: {fileID: 153965829}
+  - component: {fileID: 153965830}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -253,7 +254,7 @@ Transform:
   - {fileID: 1899435273}
   - {fileID: 1297144096}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &153965823
 MonoBehaviour:
@@ -268,46 +269,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatIsWall:
+    serializedVersion: 2
     m_Bits: 1
   wallRunForce: 5
   maxWallRunTime: 550
   maxWallSpeed: 20
-  isWallRight: 0
-  isWallLeft: 0
-  isWallRunning: 0
   maxWallRunCameraTilt: 30
   wallRunCameraTilt: 5
   playerCam: {fileID: 963194228}
   orientation: {fileID: 1887302045}
-  rb: {fileID: 0}
-  xRotation: 0
-  sensitivity: 50
-  sensMultiplier: 1
   moveSpeed: 4500
   maxSpeed: 10
   grounded: 0
   whatIsGround:
+    serializedVersion: 2
     m_Bits: 256
   counterMovement: 0.175
-  threshold: 0.01
   maxSlopeAngle: 35
-  crouchScale: {x: 1, y: 0.5, z: 1}
-  playerScale: {x: 0, y: 0, z: 0}
   slideForce: 150
   slideCounterMovement: 0.001
   isSlide: 0
   readyToJump: 1
-  jumpCooldown: 0.25
   jumpForce: 550
-  x: 0
-  y: 0
-  jumping: 0
-  sprinting: 0
-  crouching: 0
-  normalVector: {x: 0, y: 1, z: 0}
-  wallNormalVector: {x: 0, y: 0, z: 0}
-  desiredX: 0
-  cancellingGrounded: 0
 --- !u!54 &153965824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -398,75 +381,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatIsWall:
+    serializedVersion: 2
     m_Bits: 1
   wallrunForce: 5
   maxWallrunTime: 1000
   maxWallSpeed: 50
-  isWallRight: 0
-  isWallLeft: 0
-  isWallRunning: 0
   maxWallRunCameraTilt: 20
   wallRunCameraTilt: 10
   playerCam: {fileID: 963194228}
   orientation: {fileID: 1887302045}
-  rb: {fileID: 0}
-  xRotation: 0
-  sensitivity: 50
-  sensMultiplier: 1
   moveSpeed: 4500
   maxSpeed: 20
-  startMaxSpeed: 0
   grounded: 0
   whatIsGround:
+    serializedVersion: 2
     m_Bits: 256
   counterMovement: 0.175
-  threshold: 0.01
   maxSlopeAngle: 35
-  crouchScale: {x: 1, y: 0.5, z: 1}
-  playerScale: {x: 0, y: 0, z: 0}
   slideForce: 150
   slideCounterMovement: 0.001
   crouchGravityMultiplier: 0
-  readyToJump: 1
-  jumpCooldown: 0.25
   jumpForce: 550
   startDoubleJumps: 1
-  doubleJumpsLeft: 0
   x: 0
   y: 0
-  jumping: 0
-  sprinting: 0
-  crouching: 0
   dashForce: 0
   dashCooldown: 0
   dashTime: 0
-  allowDashForceCounter: 0
-  readyToDash: 0
-  wTapTimes: 0
-  dashStartVector: {x: 0, y: 0, z: 0}
   maxRocketTime: 0
   rocketForce: 0
-  rocketActive: 0
-  readyToRocket: 0
-  alreadyInvokedRockedStop: 0
-  rocketTimer: 0
-  normalVector: {x: 0, y: 1, z: 0}
   maxSonicSpeed: 0
   sonicSpeedForce: 0
   timeBetweenNextSonicBoost: 0
-  timePassedSonic: 0
   flashCooldown: 0
   flashRange: 0
   maxFlashesLeft: 0
-  alreadySubtractedFlash: 0
   flashesLeft: 3
   climbForce: 0
   maxClimbSpeed: 0
   whatIsLadder:
+    serializedVersion: 2
     m_Bits: 0
-  alreadyStoppedAtLadder: 0
-  desiredX: 0
-  cancellingGrounded: 0
 --- !u!114 &153965829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,12 +435,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeed: 50
-  rg: {fileID: 0}
-  isDashing: 0
-  sensitivity: 50
-  sensMultiplier: 1
   dashDuration: 0.5
   dashEffect: {fileID: 1297144093}
+--- !u!114 &153965830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153965821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27dc309008db8364cbe973f367e7071f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &169511420
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +504,7 @@ MeshRenderer:
   m_GameObject: {fileID: 169511420}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1844,7 +1807,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6959,5 +6921,74 @@ Transform:
   - {fileID: 591654042}
   - {fileID: 697904764}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8719120313051432707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 91.12746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.285548
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.15872
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727768823500742743, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102886265538083565, guid: b7f0e4d5b55964f48bdd52fc2a4abe52,
+        type: 3}
+      propertyPath: m_Name
+      value: arrow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7f0e4d5b55964f48bdd52fc2a4abe52, type: 3}
