@@ -271,7 +271,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (grounded || (isSlide && crouching) && readyToJump && !isWallRunning )
+        if (grounded && readyToJump && !isWallRunning )
         {
             readyToJump = false;
 
