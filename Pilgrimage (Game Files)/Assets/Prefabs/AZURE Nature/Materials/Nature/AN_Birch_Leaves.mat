@@ -10,8 +10,8 @@ Material:
   m_Name: AN_Birch_Leaves
   m_Shader: {fileID: 4800000, guid: 0154318cd2c5a3747a66420b5d885dd5, type: 3}
   m_ShaderKeywords: _COLOR2ENABLE_ON _COLOR2OVERLAYTYPE_VERTEXPOSITIONBASED _COLOR2OVERLAYTYPE_VERTEX_POSITION_BASED
-    _COLOR2TYPE_VERTEXPOSITIONBASED _KEYWORD0_ON _SNOWOVERLAYTYPE_WORLDNORMALBASED
-    _SNOWOVERLAYTYPE_WORLD_NORMAL_BASED _TREETYPE_BROADLEAF _WIND_ON
+    _COLOR2TYPE_VERTEXPOSITIONBASED _FIXTHEBASEOFFOLIAGE_ON _KEYWORD0_ON _SNOWOVERLAYTYPE_WORLDNORMALBASED
+    _SNOWOVERLAYTYPE_WORLD_NORMAL_BASED _SNOW_ON _TREETYPE_BROADLEAF _WIND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -94,18 +94,18 @@ Material:
     - _COLOR2: 0
     - _Color2: 0
     - _Color2Enable: 1
-    - _Color2Fade: -0.06
+    - _Color2Fade: 0.08
     - _Color2Int: 0.36
     - _Color2Intensity: 1
     - _Color2Level: -7.5
     - _Color2OverlayType: 0
     - _Color2Power: -4.82
     - _Color2Type: 0
-    - _Cutoff: 0.35
+    - _Cutoff: 0.367
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnableColor2: 0
-    - _Fixthebaseoffoliage: 0
+    - _Fixthebaseoffoliage: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -115,7 +115,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SNOW: 0
+    - _SNOW: 1
     - _Smoothness: 0.1
     - _SmoothnessTextureChannel: 0
     - _Snow: 0
@@ -142,8 +142,8 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.11446146, g: 0.496, b: 0.05341538, a: 0}
-    - _Color2: {r: 0.5568627, g: 1, b: 0.10196078, a: 0}
+    - _Color1: {r: 0.09177571, g: 0.49411765, b: 0.054901958, a: 0}
+    - _Color2: {r: 1, g: 1, b: 1, a: 0}
     - _CoverageColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SnowColor: {r: 1, g: 1, b: 1, a: 0}
