@@ -125,7 +125,6 @@ public class PlayerMovement : MonoBehaviour
         WallRunInput();
     }
 
-
     /// <summary>
     /// Find user input. Should put this in its own class but im lazy
     /// </summary>
@@ -485,32 +484,6 @@ public class PlayerMovement : MonoBehaviour
         {
             cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
-        }
-        if (other.gameObject.tag == "Clamp")
-        {
-            Vector3 normal = other.GetContact(0).normal;
-            Vector3 horForward = playerCam.transform.forward;
-            horForward.y = 0;
-            horForward.Normalize();
-            if (Vector3.Angle(horForward, -normal) <= 60)
-            {
-                bool ledgeAvail = true;
-                RaycastHit hit;
-                if (Physics.Raycast(playerCam.transform.position + Vector3.up * 0.5f, -normal, out hit, 1, LayerMask.GetMask("clamp")))
-                {
-                    ledgeAvail = false;
-                }
-                if(ledgeAvail)
-                {
-                    Vector3 currPos = playerCam.transform.position + Vector3.up * 0.5f + Vector3.down * 0.05f;
-                    while(!Physics.Raycast(currPos,-normal, out hit,1, LayerMask.GetMask("clamp")))
-                    {
-                        currPos += Vector3.down * 0.05f;
-                        if (currPos.y < playerCam.transform.position.y - 2f);
-                        break;
-                    }
-                }
-            }
         }
     }
 
