@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
     bool isWallRunning;
     public float maxWallRunCameraTilt, wallRunCameraTilt;
 
+    //Clamping
+    public Vector3 ledgeClimbPos;
+    public Vector3 ledgeOrigPos;
+    public bool climbing = false;
+    public float climbTime = 0.2f;
+
 
     private void WallRunInput()
     {
@@ -177,6 +183,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
+        if(climbing)
+        {
+            Vector3 rbVelocity = rb.velocity;
+            rbVelocity.y = 0;
+            rb.MovePosition(Vector3.Lerp(ledgeOrigPos, ledgeClimbPos + Vector3.up * 2f, climbTime));
+            rb.velocity += rbVelocity;
+            climbTime += Time.fixedDeltaTime * 10f;
+            if(climbTime >= 1.0)
+            {
+                climbing = false;
+            }
+        }
+
+
+
         if(isWallRunning)
         {
             grounded = false;
@@ -458,6 +479,8 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void OnCollisionStay(Collision other)
     {
+
+
         //Make sure we are only checking for walkable layers
         int layer = other.gameObject.layer;
         if (whatIsGround != (whatIsGround | (1 << layer))) return;
@@ -485,7 +508,42 @@ public class PlayerMovement : MonoBehaviour
             cancellingGrounded = true;
             Invoke(nameof(StopGrounded), Time.deltaTime * delay);
         }
+
+        if(climbing || !other.collider.CompareTag("Climbable"))
+            return;
+
+
+        Vector3 normal2 = other.GetContact(0).normal;
+        Vector3 horForward = playerCam.transform.forward;
+        horForward.y = 0;
+        horForward.Normalize();
+        if (Vector3.Angle(horForward, -normal2) <= 45)
+        {
+            bool ledgeAvail = true;
+            RaycastHit hit;
+            if (Physics.Raycast(playerCam.transform.position + Vector3.up * 0.5f, -normal2, out hit,1, LayerMask.GetMask("Ground")))
+            {
+                ledgeAvail = false;
+            }
+            if (ledgeAvail)
+            {
+                Vector3 currPos = playerCam.transform.position + Vector3.up * 0.5f + Vector3.down * 0.5f;
+                while (!Physics.Raycast(currPos, -normal2, out hit, 1, LayerMask.GetMask("Ground")))
+                {
+                    currPos += Vector3.down * 0.05f;
+                    if (currPos.y < playerCam.transform.position.y - 2f)
+                        break;
+                }
+                ledgeOrigPos = this.transform.position;
+                ledgeClimbPos = currPos - normal2;
+                climbing = true;
+                climbTime = 0.0f;
+
+
+            }
+        }
     }
+
 
     private void StopGrounded()
     {

@@ -45,9 +45,11 @@ public class DashingScript : MonoBehaviour
     {
 
         rg.velocity = Vector3.zero;
+        rg.useGravity = false;
         rg.AddForce(Camera.main.transform.forward * dashSpeed, ForceMode.Impulse);
+        rg.useGravity = true;
         isDashing = false;
-        Invoke("CancelDashing", 0.5f);
+        
         
 
 
@@ -55,6 +57,7 @@ public class DashingScript : MonoBehaviour
     }
     private void CancelDashing()
     {
+        
         rg.velocity = Vector3.zero;
     }
     
