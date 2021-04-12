@@ -247,10 +247,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
 
-            if (x > 0 && xMag > maxSpeed*2) x = 0;
-            if (x < 0 && xMag < -maxSpeed*2) x = 0;
-            if (y > 0 && yMag > maxSpeed*2) y = 0;
-            if (y < 0 && yMag < -maxSpeed*2) y = 0;
+            if (x > 0 && xMag > maxSpeed*1.2) x = 0;
+            if (x < 0 && xMag < -maxSpeed*1.2) x = 0;
+            if (y > 0 && yMag > maxSpeed*1.2) y = 0;
+            if (y < 0 && yMag < -maxSpeed*1.2) y = 0;
         }
 
 
