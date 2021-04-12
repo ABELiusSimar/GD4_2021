@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Climbable
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -16,8 +16,8 @@ TagManager:
   - 
   - Ground
   - Player
-  - Ground
-  - Clamp
+  - 
+  - 
   - 
   - 
   - 
