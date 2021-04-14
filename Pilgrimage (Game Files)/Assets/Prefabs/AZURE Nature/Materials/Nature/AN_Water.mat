@@ -51,9 +51,9 @@ Material:
     - _1: 0.8
     - _2: 0.7
     - _ChromaticAberration: 0
-    - _CoastOpacity: 0.348
+    - _CoastOpacity: 0.2
     - _CoastalWavesDensity: 0.5
-    - _DepthDistance: 1.5
+    - _DepthDistance: 10
     - _DepthFade: 1
     - _DepthIntensity: 0.411
     - _EdgeFoamTile: 4.24
@@ -61,17 +61,17 @@ Material:
     - _Float1: 0
     - _Float2: 0.1
     - _Float3: 0
-    - _FoamContrast: 0.7
-    - _FoamDensity: 0.392
-    - _FoamDistance: 0.35
+    - _FoamContrast: 0.347
+    - _FoamDensity: 0.667
+    - _FoamDistance: 0.13
     - _FoamOpacity: 1
     - _Normal: 0.15
     - _Opacity: 1
     - _Power: 0.2
     - _RefractionIntensity: 0.15
-    - _RefractionScale: 0.2
+    - _RefractionScale: 1
     - _Scale: 50
-    - _Smoothness: 0.9
+    - _Smoothness: 1
     - _TransAmbient: 0.2
     - _TransDirect: 1
     - _TransNormalDistortion: 0.1
@@ -80,13 +80,13 @@ Material:
     - _Translucency: 0
     - _UDepthDistance: 0.3
     - _UDistancePower: 0.1
-    - _WavesNormalIntensity: 0.35
-    - _WavesSpeed: 0.1
+    - _WavesNormalIntensity: 0.94
+    - _WavesSpeed: 1
     - _WavesTile: 0.15
     - __dirty: 0
     m_Colors:
     - _Color0: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
-    - _Color1: {r: 0.049739826, g: 0.322, b: 0.30629268, a: 0}
+    - _Color1: {r: 0.050980385, g: 0.32156864, b: 0.2966042, a: 0}
     - _Color2: {r: 0.09011214, g: 0.6285934, b: 0.7075472, a: 0}
     - _DepthColor: {r: 0, g: 1, b: 0.9725489, a: 0}
     - _NormalScale: {r: 2, g: 2, b: 0, a: 0}

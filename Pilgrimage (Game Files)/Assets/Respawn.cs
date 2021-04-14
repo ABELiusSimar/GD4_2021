@@ -14,4 +14,8 @@ public class Respawn : MonoBehaviour
     {
         Application.Quit();
     }
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Seliana");
+    }
 }
