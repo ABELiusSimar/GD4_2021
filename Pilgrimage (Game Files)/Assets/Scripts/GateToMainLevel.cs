@@ -7,9 +7,9 @@ public class GateToMainLevel : MonoBehaviour
 {
     void OnTriggerEnter(Collider Gate)
     {
-        if(Gate.gameObject.tag == "Player" || Gate.gameObject.tag == "Untagged")
+        if(Gate.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("Valaris Main Level", LoadSceneMode.Single);
         }
     }
 }
