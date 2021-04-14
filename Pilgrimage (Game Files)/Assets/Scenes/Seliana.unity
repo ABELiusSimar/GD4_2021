@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 358378881}
-  m_IndirectSpecularColor: {r: 0.17713979, g: 0.22175273, b: 0.30401284, a: 1}
+  m_IndirectSpecularColor: {r: 0.44242796, g: 0.49149066, b: 0.57134897, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a40c7c007d2cbd64cb680ab36cd8e57c,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1455,6 +1456,10 @@ MonoBehaviour:
   player: {fileID: 1030352605}
   wanderRadius: 25
   wanderTimer: 5
+  startWander: 1
+  lockedOnPlayer: 0
+  lockedLastLocation: 0
+  lookingAround: 0
 --- !u!195 &40639185
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -36374,6 +36379,7 @@ GameObject:
   - component: {fileID: 1030352600}
   - component: {fileID: 1030352599}
   - component: {fileID: 1030352598}
+  - component: {fileID: 1030352606}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -36489,6 +36495,7 @@ MonoBehaviour:
   isSlide: 0
   readyToJump: 1
   jumpForce: 550
+  uiInvetory: {fileID: 0}
 --- !u!54 &1030352601
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36583,6 +36590,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1030352606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030352597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd969aeca8cad443b36900d2cf79c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 2
 --- !u!4 &1031207311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d65bab743f2ff0443a6703470e679152,
