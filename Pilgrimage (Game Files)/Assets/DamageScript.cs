@@ -28,7 +28,7 @@ public class DamageScript : MonoBehaviour
 
     public void TakeDamage()
     {
-        HP = 1;
+        HP -= 1;
         if (HP <= 0)
         {
             HP = 0;
