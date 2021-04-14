@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
     
     //Inventory (Abraham Addition)
     public Inventory inventory;
-    [SerializeField] private UI_Inventory uiInvetory;
+    //[SerializeField] private UI_Inventory uiInvetory;
 
     private void OnTriggerEnter(Collider item)
     {
