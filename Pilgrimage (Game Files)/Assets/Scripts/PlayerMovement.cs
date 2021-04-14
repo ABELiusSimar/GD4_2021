@@ -139,7 +139,16 @@ public class PlayerMovement : MonoBehaviour
 
         // Retrieve the name of this scene.
         string sceneName = currentScene.name;
+        if(sceneName == "GameOver")
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+
         PlayerStats.Level = sceneName;
+        }
 
 
     }

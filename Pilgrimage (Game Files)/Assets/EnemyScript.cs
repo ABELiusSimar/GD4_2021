@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour
 {
 
-    [SerializeField] protected Vector3 m_from = new Vector3(0.0F, 45.0F, 0.0F);
-    [SerializeField] protected Vector3 m_to = new Vector3(0.0F, -45.0F, 0.0F);
+    [SerializeField] protected Vector3 m_from = new Vector3(0.0F, 180.0F, 0.0F);
+    [SerializeField] protected Vector3 m_to = new Vector3(0.0F, -180.0F, 0.0F);
     [SerializeField] protected float m_frequency = 1.0F;
 
 
@@ -21,7 +21,9 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] private bool lockedOnPlayer;
     [SerializeField] private bool lockedLastLocation;
     [SerializeField] private bool lookingAround;
+    [SerializeField] private bool attackedPlayer;
     private Vector3 lastLocation;
+    public DamageScript script;
 
 
 
@@ -33,6 +35,7 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         timer = 0;
         lockedOnPlayer = false;
+        attackedPlayer = false;
 
 
 
@@ -41,74 +44,82 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!lockedOnPlayer && !lockedLastLocation && startWander && !lookingAround)
+        if (!attackedPlayer)
         {
-            timer += Time.deltaTime;
 
-            if (timer >= wanderTimer)
+            if (!lockedOnPlayer && !lockedLastLocation && startWander && !lookingAround)
             {
-                Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, 29);
-                agent.SetDestination(newPos);
-                Debug.DrawLine(transform.position, newPos, Color.black, 10);
-                timer = 0;
-            }
+                timer += Time.deltaTime;
 
-        }
-        if (lookingAround)
-        {
-            float dist = agent.remainingDistance;
-           
-            if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance < 1)
-
-            {
-                LookAround();
-
-            }
-
-        }
-
-        if (agent.remainingDistance < 5f)
-        {
-            agent.speed = 6;
-        }
-        else
-        {
-            agent.speed = 6;
-        }
-
-
-
-
-        if (CheckForPlayer() && !lookingAround)
-        {
-            lookingAround = false;
-            float maxRange = 25;
-            RaycastHit hit;
-
-            if (Vector3.Distance(transform.position, player.position) < maxRange)
-            {
-
-                if (Physics.Raycast(transform.position, (player.position - transform.position), out hit, maxRange))
+                if (timer >= wanderTimer)
                 {
-                    if (hit.transform == player)
+                    Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, 29);
+                    agent.SetDestination(newPos);
+                    Debug.DrawLine(transform.position, newPos, Color.black, 10);
+                    timer = 0;
+                }
+
+            }
+            if (lookingAround)
+            {
+                float dist = agent.remainingDistance;
+
+                if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance < 1)
+
+                {
+                    LookAround();
+
+                }
+
+            }
+
+            if (agent.remainingDistance < 5f)
+            {
+                agent.speed = 6;
+            }
+            else
+            {
+                agent.speed = 6;
+            }
+
+
+
+
+            if (CheckForPlayer() && !lookingAround)
+            {
+                lookingAround = false;
+                float maxRange = 25;
+                RaycastHit hit;
+
+                if (Vector3.Distance(transform.position, player.position) < maxRange)
+                {
+
+                    if (Physics.Raycast(transform.position, (player.position - transform.position), out hit, maxRange))
                     {
-                        Debug.DrawRay(transform.position, (player.position - transform.position), Color.green, 0, true);
-                        FaceTarget(player.position);
-                        agent.SetDestination(player.position);
-                        lockedLastLocation = false;
-                        lockedOnPlayer = true;
-                    }
-                    else if (lockedOnPlayer)
-                    {
-                        if (!lockedLastLocation)
+                        if (hit.transform == player)
                         {
-                            Vector3 lastPos = transform.position;
-                            Vector3 lastSeenPlayer = player.position;
-                            Debug.DrawRay(lastPos, lastSeenPlayer, Color.red, 10, true);
-                            agent.SetDestination(lastSeenPlayer);
-                            Debug.DrawLine(transform.position, lastSeenPlayer, Color.black, 10);
-                            lockedOnPlayer = false;
-                            lookingAround = true;
+                            Debug.DrawRay(transform.position, (player.position - transform.position), Color.green, 0, true);
+                            FaceTarget(player.position);
+                            agent.SetDestination(player.position);
+                            lockedLastLocation = false;
+                            lockedOnPlayer = true;
+                        }
+                        else if (lockedOnPlayer)
+                        {
+                            if (!lockedLastLocation)
+                            {
+                                Vector3 lastPos = transform.position;
+                                Vector3 lastSeenPlayer = player.position;
+                                Debug.DrawRay(lastPos, lastSeenPlayer, Color.red, 10, true);
+                                agent.SetDestination(lastSeenPlayer);
+                                Debug.DrawLine(transform.position, lastSeenPlayer, Color.black, 10);
+                                lockedOnPlayer = false;
+                                lookingAround = true;
+
+
+                            }
+
+
 
 
                         }
@@ -116,22 +127,29 @@ public class EnemyScript : MonoBehaviour
 
 
 
+
+
+
+
+
                     }
-
-
-
-
-
-
-
-
-
                 }
             }
         }
-        else
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.tag);
+        if(other.tag == "Player")
         {
-            lockedOnPlayer = false;
+            if(!attackedPlayer)
+            {
+                attackedPlayer = true;
+                script.TakeDamage();
+                Invoke("CoolDown", 5f);
+
+            }
+
         }
     }
     public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
@@ -184,6 +202,7 @@ public class EnemyScript : MonoBehaviour
     }
     private void LookAround()
     {
+        lockedOnPlayer = false;
         startWander = false;
         //supposed to rotate but does not work for some reason
         Quaternion from = Quaternion.Euler(m_from);
@@ -191,8 +210,15 @@ public class EnemyScript : MonoBehaviour
 
         float lerp = 0.5F * (1.0F + Mathf.Sin(Mathf.PI * Time.realtimeSinceStartup * this.m_frequency));
         this.transform.localRotation = Quaternion.Lerp(from, to, lerp);
+        this.transform.localRotation = Quaternion.Lerp(to, from, lerp);
 
-        Invoke("WonderFast", 1f);
+
+        Invoke("WonderFast", 2f);
 
     }
+    private void CoolDown()
+    {
+        attackedPlayer = false;
+    }
+    
 }
