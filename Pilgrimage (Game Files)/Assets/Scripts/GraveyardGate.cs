@@ -24,7 +24,7 @@ public class GraveyardGate : MonoBehaviour
 
         if(Gate.gameObject.tag == "Player")
         {
-            if(playerItem.inventory.itemList.Count == 2)
+            if(playerItem.inventory.itemList.Count == 3)
             {
                 Destroy(gameObject);
                 Debug.Log("Open");
