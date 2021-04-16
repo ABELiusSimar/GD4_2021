@@ -83,6 +83,10 @@ public class PlayerMovement : MonoBehaviour
     private float threshold = 0.01f;
     public float maxSlopeAngle = 35f;
 
+    //Abraham Addition for movement
+    public bool isMoving = false;
+    public bool land = true;
+
     //Crouch & Slide
     private Vector3 crouchScale = new Vector3(1, 0.5f, 1);
     private Vector3 playerScale;
@@ -97,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Input
     float x, y;
-    bool jumping, sprinting, crouching;
+    public bool jumping, sprinting, crouching;
 
     //Sliding
     private Vector3 normalVector = Vector3.up;
@@ -188,6 +192,21 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
             StopRun();
 
+        //Abraham Addition for footsteps
+        if(x > 0 || x < 0 || y > 0 || y < 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        //Abraham Addition for landing sounds
+        if(jumping == true)
+        {
+            land = false;
+        }
     }
     private void StartRun()
     {
