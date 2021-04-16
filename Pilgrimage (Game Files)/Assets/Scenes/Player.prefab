@@ -4967,6 +4967,7 @@ GameObject:
   - component: {fileID: 5196078900149554999}
   - component: {fileID: 5196078900149554998}
   - component: {fileID: 5196078900149555006}
+  - component: {fileID: 6723321362304266812}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -5191,3 +5192,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 5196078899933373125}
   HP: 2
+--- !u!81 &6723321362304266812
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196078900149554997}
+  m_Enabled: 1
