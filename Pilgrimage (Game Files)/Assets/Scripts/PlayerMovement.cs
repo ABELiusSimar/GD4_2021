@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -109,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
     
     //Inventory (Abraham Addition)
     public Inventory inventory;
-    //[SerializeField] private UI_Inventory uiInvetory;
+    public Text KeyNumber;
 
     private void OnTriggerEnter(Collider item)
     {
@@ -129,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
         
         //Abraham addition for inventory system
         inventory = new Inventory();
-        //uiInvetory.SetInventory(inventory);
     }
 
     void Start()
@@ -150,11 +150,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-
-        PlayerStats.Level = sceneName;
+            PlayerStats.Level = sceneName;
         }
-
-
     }
 
 
@@ -169,6 +166,9 @@ public class PlayerMovement : MonoBehaviour
         Look();
         CheckForWall();
         WallRunInput();
+
+        //Abraham Addition for inventory number
+        KeyNumber.text = this.inventory.itemList.Count.ToString();
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void StartRun()
     {
-        maxSpeed =20f;
+        maxSpeed = 20f;
     }
     private void StopRun()
     {
