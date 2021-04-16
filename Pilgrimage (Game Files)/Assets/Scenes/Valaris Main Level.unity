@@ -1830,7 +1830,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc2c93b41f04ac0478f2b681599a7d92, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e38a73bf455bbba43942f040adf3955e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.304
   m_Pitch: 1
@@ -2486,6 +2486,8 @@ GameObject:
   - component: {fileID: 334591616}
   - component: {fileID: 334591615}
   - component: {fileID: 334591623}
+  - component: {fileID: 334591625}
+  - component: {fileID: 334591624}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -2727,13 +2729,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf6a97e848877d4a87eba78c2d923f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FootstepSounds:
-  - {fileID: 8300000, guid: 1612415bc3fed3249b93389377b5d7a4, type: 3}
-  - {fileID: 8300000, guid: 0d7c16dbdffa5224db26a888ebdc6250, type: 3}
-  - {fileID: 8300000, guid: 3de4ff1a5f9381c4abf807878e884425, type: 3}
-  - {fileID: 8300000, guid: e194befd61221e14ca0e4d5915f064bc, type: 3}
-  JumpSound: {fileID: 8300000, guid: c72d5be2d8eb48345a664b6bbe5701f1, type: 3}
-  LandSound: {fileID: 8300000, guid: 8ee3d355f48b70b49bbd3237edb38b3d, type: 3}
 --- !u!82 &334591625
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6461,7 +6456,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc2c93b41f04ac0478f2b681599a7d92, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e38a73bf455bbba43942f040adf3955e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.207
   m_Pitch: 1
@@ -13740,7 +13735,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc2c93b41f04ac0478f2b681599a7d92, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e38a73bf455bbba43942f040adf3955e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.385
   m_Pitch: 1
