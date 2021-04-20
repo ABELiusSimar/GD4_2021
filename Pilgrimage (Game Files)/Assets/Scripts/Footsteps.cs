@@ -11,12 +11,16 @@ public class Footsteps : MonoBehaviour
     [SerializeField] private AudioClip[] FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
     [SerializeField] private AudioClip JumpSound;           // the sound played when character leaves the ground.
     [SerializeField] private AudioClip LandSound;           // the sound played when character touches back on ground.
+    [SerializeField] private AudioClip SlideSound;           // the sound played when character is sliding.
+    [SerializeField] private AudioClip WallrunSound;           // the sound played when character is wallrunning.
 
     //add the vars for pitch change of footsteps, jump and landing sounds
     private float walkPitch;
     private float runningPitch;
     private float jumpPitch;
     private float landPitch;
+    private float slidePitch;
+    private float wallrunPitch;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,8 @@ public class Footsteps : MonoBehaviour
         runningPitch = Random.Range(1.5f, 2f);
         jumpPitch = Random.Range(0.5f, 1.5f);
         landPitch = Random.Range(0.25f, 1.25f);
+        slidePitch = Random.Range(0.5f, 1.5f);
+        wallrunPitch = Random.Range(0.25f, 0.5f);
     }
 
     // Update is called once per frame
@@ -57,7 +63,13 @@ public class Footsteps : MonoBehaviour
         else if(player.crouching == true && player.grounded == true)
         {
             //Still working on it
-            PlayFootStepAudio();
+            PlaySlideSound();
+        }
+        //Wallrunning
+        else if(player.isWallRunning == true)
+        {
+            //Still working on it
+            PlayWallRunSound();
         }
     }
 
@@ -120,5 +132,29 @@ public class Footsteps : MonoBehaviour
     private void PlaySlideSound()
     {
         //Still working on it
+        if (!player.grounded)
+        {
+            return;
+        }
+        audioSource.clip = SlideSound;
+        //add landPitch here
+        audioSource.pitch = slidePitch;
+        audioSource.Play();
+        //recalculate landPitch value
+        slidePitch = Random.Range(0.25f, 1f);
+    }
+
+    private void PlayWallRunSound()
+    {
+        if (player.grounded)
+        {
+            return;
+        }
+        audioSource.clip = WallrunSound;
+        //add landPitch here
+        audioSource.pitch = wallrunPitch;
+        audioSource.Play();
+        //recalculate landPitch value
+        wallrunPitch = Random.Range(0.25f, 1f);
     }
 }

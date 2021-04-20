@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask whatIsWall;
     public float wallRunForce, maxWallRunTime, maxWallSpeed;
     bool isWallRight, isWallLeft;
-    bool isWallRunning;
+    public bool isWallRunning;
     public float maxWallRunCameraTilt, wallRunCameraTilt;
     //Clamping
     public Vector3 ledgeClimbPos;
