@@ -51,7 +51,11 @@ public class Footsteps : MonoBehaviour
         //Jumping
         else if(player.grounded == false && player.jumping == true)
         {
-            PlayJumpSound();
+            if(player.jumping == false)
+            {
+                PlayJumpSound();
+            }
+            
         }
         //Landing
         else if(player.grounded == true && player.land == false)
@@ -66,9 +70,8 @@ public class Footsteps : MonoBehaviour
             PlaySlideSound();
         }
         //Wallrunning
-        else if(player.isWallRunning == true)
+        else if(player.isWallRunning == true && audioSource.isPlaying == false)
         {
-            //Still working on it
             PlayWallRunSound();
         }
     }

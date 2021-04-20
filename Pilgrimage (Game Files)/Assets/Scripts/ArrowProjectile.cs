@@ -11,8 +11,10 @@ public class ArrowProjectile : MonoBehaviour
 
     //Abraham Addition for sound
     private AudioSource audioSource;
-    [SerializeField] private AudioClip ShootSound;           // the sound played when character leaves the ground.
+    [SerializeField] private AudioClip ShootSound;           // the sound played when character shoots the arrow.
+    [SerializeField] private AudioClip ChargeSound;           // the sound played when character charging the bow.
     private float shootPitch;
+    private float chargePitch;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class ArrowProjectile : MonoBehaviour
         //Abraham addition for sound
         audioSource = GetComponent<AudioSource>();
         shootPitch = Random.Range(1f, 1.5f);
+        chargePitch = Random.Range(1f, 1.2f);
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class ArrowProjectile : MonoBehaviour
             Invoke("WillShoot", 0.5f);
             animator.SetBool("Charging", true);
             //Abraham addition for sound
-            PlayArrowShotSound();
+            PlayBowChargingSound();
         }
         if (canShoot && Input.GetMouseButtonUp(0))
         {
@@ -72,6 +75,7 @@ public class ArrowProjectile : MonoBehaviour
         instFoamRB.AddForce(Vector3.down * 30.81f, ForceMode.Acceleration);
     }
 
+    //Abraham Addition for bow sounds
     private void PlayArrowShotSound()
     {
         audioSource.clip = ShootSound;
@@ -80,5 +84,15 @@ public class ArrowProjectile : MonoBehaviour
         audioSource.Play();
         //recalculate jumpPitch value
         shootPitch = Random.Range(1f, 1.5f);
+    }
+
+    private void PlayBowChargingSound()
+    {
+        audioSource.clip = ChargeSound;
+        //add jumpPitch here
+        audioSource.pitch = chargePitch;
+        audioSource.Play();
+        //recalculate jumpPitch value
+        chargePitch = Random.Range(1f, 1.2f);
     }
 }
