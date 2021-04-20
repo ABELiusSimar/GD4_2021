@@ -5,11 +5,13 @@ using UnityEngine;
 public class DashingScript : MonoBehaviour
 {
     public float dashSpeed;
+    public PlayerMovement PlayerMovement;
     Rigidbody rg;
     bool isDashing;
     private float sensitivity = 50f;
     private float sensMultiplier = 1f;
     public float dashDuration = 2f;
+    private bool canDash;
 
     public GameObject dashEffect;
     // Start is called before the first frame update
@@ -33,6 +35,10 @@ public class DashingScript : MonoBehaviour
         {
             isDashing = true;
         }
+        if (PlayerMovement.grounded || PlayerMovement.isWallRunning)
+        {
+            canDash = true;
+        }
     }
 
 
@@ -43,10 +49,13 @@ public class DashingScript : MonoBehaviour
     //    effect.transform.LookAt(transform);
     private void Dashing()
     {
-
+        if (canDash)
+        {
         rg.velocity = Vector3.zero;
         rg.AddForce(Camera.main.transform.forward * dashSpeed, ForceMode.Impulse);
         isDashing = false;
+        canDash = false;
+        }
         
 
 
