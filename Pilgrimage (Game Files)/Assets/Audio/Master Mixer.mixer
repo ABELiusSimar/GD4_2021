@@ -19,6 +19,39 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-7094818915150205020
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c440324ed4b8ce949a8ac1e839cc86cd
+  m_EffectName: Attenuation
+  m_MixLevel: f66bca72ab893124089be88cda257668
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &-2235653570273867746
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArrowShot
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 9f3b5da272a622a42b32d943f3ee17f3
+  m_Children: []
+  m_Volume: 84516fb505d15774bbeaaddfc335be13
+  m_Pitch: cc4825a8d28e3e04a90865adbf4da152
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -7094818915150205020}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &-213580544544975117
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -57,6 +90,7 @@ AudioMixerController:
     - 99fc7dd2a2ee0734d8b6752c47d220f3
     - 87eec1ec9d2911446ae417466632baf9
     - eaff0a29410f97a488ac5c29a17d1109
+    - 9f3b5da272a622a42b32d943f3ee17f3
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -75,6 +109,7 @@ AudioMixerGroupController:
   - {fileID: 4755231445845242277}
   - {fileID: -7801124625900587464}
   - {fileID: 4475086281920639012}
+  - {fileID: -2235653570273867746}
   m_Volume: 4aa56c1ec99a9f64fb8e5a5dd5f73529
   m_Pitch: 979c6cc506265464bbaaaa0ef03fa37a
   m_Send: 00000000000000000000000000000000
