@@ -240,10 +240,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (climbing)
         {
-            Vector3 rbVelocity = rb.velocity;
-            rbVelocity.y = 0;
+
             rb.MovePosition(Vector3.Lerp(ledgeOrigPos, ledgeClimbPos + Vector3.up * 2f, climbTime));
-            rb.velocity += rbVelocity;
             climbTime += Time.fixedDeltaTime * 10f;
             if (climbTime >= 1.0)
             {
