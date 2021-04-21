@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 playerScale;
     public float slideForce = 20f;
     public float slideCounterMovement = 0.001f;
-    public bool isSlide;
+    public bool isSlide = false;
 
     //Jumping
     public bool readyToJump = true;
@@ -206,6 +206,12 @@ public class PlayerMovement : MonoBehaviour
         if(jumping == true)
         {
             land = false;
+        }
+
+        //Abraham Addition for sliding sounds
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            isSlide = true;
         }
     }
     private void StartRun()
