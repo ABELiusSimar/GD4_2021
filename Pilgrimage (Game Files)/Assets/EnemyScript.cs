@@ -75,11 +75,11 @@ public class EnemyScript : MonoBehaviour
 
             if (agent.remainingDistance < 5f)
             {
-                agent.speed = 6;
+                agent.speed = 10;
             }
             else
             {
-                agent.speed = 6;
+                agent.speed = 15;
             }
 
 
