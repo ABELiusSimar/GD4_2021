@@ -44,7 +44,7 @@ public class DamageScript : MonoBehaviour
     }
     public void RestoreHealth()
     {
-
+        HP = 2;
     }
 
     private void Die()

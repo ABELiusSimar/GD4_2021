@@ -30880,7 +30880,9 @@ MonoBehaviour:
     - Shift to sprint
 
     -
-    CTRL to crouch/slide
+    F to dash
+
+    - CTRL to crouch/slide
 
     - M1 To shoot'
   m_isRightToLeft: 0
