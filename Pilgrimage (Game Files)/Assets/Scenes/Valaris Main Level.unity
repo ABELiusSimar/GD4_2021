@@ -3349,7 +3349,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e194befd61221e14ca0e4d5915f064bc, type: 3}
   JumpSound: {fileID: 8300000, guid: c72d5be2d8eb48345a664b6bbe5701f1, type: 3}
   LandSound: {fileID: 8300000, guid: 8ee3d355f48b70b49bbd3237edb38b3d, type: 3}
-  SlideSound: {fileID: 8300000, guid: e194befd61221e14ca0e4d5915f064bc, type: 3}
+  SlideSound: {fileID: 8300000, guid: 6cd1b1ca0d31d5a44bfde25112962768, type: 3}
   WallrunSound: {fileID: 8300000, guid: 8ee3d355f48b70b49bbd3237edb38b3d, type: 3}
 --- !u!82 &334591625
 AudioSource:

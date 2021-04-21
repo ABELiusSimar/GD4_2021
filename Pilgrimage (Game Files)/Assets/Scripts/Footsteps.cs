@@ -31,8 +31,8 @@ public class Footsteps : MonoBehaviour
         runningPitch = Random.Range(1.5f, 2f);
         jumpPitch = Random.Range(0.5f, 1.5f);
         landPitch = Random.Range(0.25f, 1.25f);
-        slidePitch = Random.Range(0.5f, 1.5f);
-        wallrunPitch = Random.Range(0.25f, 0.5f);
+        slidePitch = Random.Range(1f, 1f);
+        wallrunPitch = Random.Range(0.5f, 1f);
     }
 
     // Update is called once per frame
@@ -63,16 +63,15 @@ public class Footsteps : MonoBehaviour
             PlayLandingSound();
             player.land = true;
         }
-        //Sliding
-        else if(player.crouching == true && player.grounded == true)
-        {
-            //Still working on it
-            PlaySlideSound();
-        }
         //Wallrunning
         else if(player.isWallRunning == true && audioSource.isPlaying == false)
         {
             PlayWallRunSound();
+        }
+        //Sliding
+        else if(player.isSlide == true)
+        {
+            PlaySlideSound();
         }
     }
 
@@ -144,7 +143,7 @@ public class Footsteps : MonoBehaviour
         audioSource.pitch = slidePitch;
         audioSource.Play();
         //recalculate landPitch value
-        slidePitch = Random.Range(0.25f, 1f);
+        slidePitch = Random.Range(1f, 1f);
     }
 
     private void PlayWallRunSound()
@@ -158,6 +157,6 @@ public class Footsteps : MonoBehaviour
         audioSource.pitch = wallrunPitch;
         audioSource.Play();
         //recalculate landPitch value
-        wallrunPitch = Random.Range(0.25f, 1f);
+        wallrunPitch = Random.Range(0.5f, 1f);
     }
 }
